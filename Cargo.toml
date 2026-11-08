@@ -1,0 +1,21 @@
+[package]
+name = "pico2-ptt-adapter"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+cortex-m = "0.7"
+cortex-m-rt = "0.7"
+panic-halt = "0.2"
+rp235x-hal = { version = "0.4", features = ["rt", "critical-section-impl"] }
+usb-device = { version = "0.3", features = ["control-buffer-256"] }
+usbd-audio = "0.4"
+usbd-hid = "0.10"
+embedded-hal = "1.0"
+embedded-hal-0-2 = { package = "embedded-hal", version = "0.2.7", features = ["unproven"] }
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
